@@ -14,6 +14,7 @@
   <title>Celestia AI - Inteligencia Artificial que Evoluciona</title>
   <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32?text=AI" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.7/dist/tailwind.min.css" integrity="sha256-/sL2HGlkE+6DWV6Ly1bT4q3uZqW53AKK2uZ1jUjJGLc=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-bg: #0b1120;
@@ -25,6 +26,9 @@
       --transition: 0.3s ease;
       --color-bg-light: #f5f7fa;
       --color-text-light: #333;
+      --section-bg: #2d3748;
+      --input-bg: #4a5568;
+      --input-color: #cdd6f4;
     }
 
     body {
@@ -41,6 +45,9 @@
     body.light-theme {
       background-color: var(--color-bg-light);
       color: var(--color-text-light);
+      --section-bg: #f5f7fa;
+      --input-bg: #f9fafb;
+      --input-color: #333;
     }
 
     header {
@@ -65,17 +72,20 @@
 
     nav {
       margin-top: 0.5rem;
-      border-bottom: none !important; /* Elimina cualquier borde inferior */
+      border-bottom: none !important;
     }
 
     nav ul {
       list-style: none;
       display: flex;
+      flex-direction: row;
       justify-content: center;
       gap: 1rem;
       padding: 0;
-      flex-wrap: wrap;
-      border-bottom: none !important; /* Elimina cualquier borde inferior */
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      border-bottom: none !important;
+      -webkit-overflow-scrolling: touch;
     }
 
     nav ul li {
@@ -83,15 +93,20 @@
     }
 
     nav ul li a {
-      color: #e5e7eb;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 2px solid white;
+      color: white;
       text-decoration: none;
       font-weight: 500;
+      border-radius: 6px;
+      transition: all var(--transition);
       white-space: nowrap;
-      transition: color var(--transition);
     }
 
     nav ul li a:hover, nav ul li a:focus {
-      color: #dbeafe;
+      background-color: var(--color-primary);
+      color: white;
     }
 
     main {
@@ -110,10 +125,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    body.dark-theme section {
-      background: #2d3748;
+      background: var(--section-bg);
     }
 
     h2 {
@@ -223,16 +235,10 @@
       padding: 0.75rem;
       border: 1px solid #d1d5db;
       border-radius: 6px;
-      background: #f9fafb;
-      color: var(--color-text-light);
+      background: var(--input-bg);
+      color: var(--input-color);
       font-size: 1rem;
       transition: border-color var(--transition), box-shadow var(--transition);
-    }
-
-    body.dark-theme input, body.dark-theme textarea {
-      background: #4a5568;
-      border-color: #4a5568;
-      color: var(--color-light);
     }
 
     input:focus, textarea:focus {
@@ -297,28 +303,26 @@
 
     @media (max-width: 768px) {
       nav ul {
-        flex-direction: column;
         gap: 0.5rem;
       }
-
+      nav ul li a {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+      }
       header h1 {
         font-size: 2rem;
       }
-
       section {
         padding: 1.5rem;
         min-height: 150px;
       }
-
       .button {
         width: 100%;
         max-width: 300px;
       }
-
       .center-buttons {
         gap: 0.5rem;
       }
-
       button.submit-btn {
         width: 100%;
         max-width: 300px;
@@ -326,7 +330,7 @@
     }
   </style>
 </head>
-<body class="light-theme">
+<body>
   <a href="#main-content" class="sr-only focus:not-sr-only bg-primary text-white p-2 rounded">Ir al contenido principal</a>
   <button class="theme-toggle" aria-label="Cambiar tema" onclick="toggleTheme()">🌙</button>
 
@@ -393,7 +397,6 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <!-- Reemplaza 'your_formspree_id' con tu ID real de Formspree -->
       <form id="contactForm" action="https://formspree.io/f/your_formspree_id" method="POST" class="text-center">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required aria-describedby="nombre-error" />
@@ -445,8 +448,9 @@
     function toggleTheme() {
       try {
         const body = document.body;
-        body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+        body.classList.toggle('light-theme');
+        const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
       } catch (e) {
         console.error('Error in toggleTheme:', e);
       }
@@ -454,8 +458,9 @@
 
     // Load saved theme
     try {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme');
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
       }
     } catch (e) {
       console.error('Error loading theme:', e);
@@ -493,7 +498,5 @@
       }
     });
   </script>
-</body>
-</html>
 </body>
 </html>
