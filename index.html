@@ -304,15 +304,17 @@ nav ul li a {
       border-top: 1px solid #4a5568;
     }
 
-   @media (max-width: 768px) {
+@media (max-width: 768px) {
   nav ul {
     gap: 0.5rem;
+    overflow-x: auto;                 
+    -webkit-overflow-scrolling: touch; 
   }
   nav ul li a {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
-    max-width: none;       
-    white-space: normal;   
+    max-width: 150px;                 
+    white-space: normal;              
   }
   header h1 {
     font-size: 2rem;
@@ -333,6 +335,7 @@ nav ul li a {
     max-width: 300px;
   }
 }
+
   </style>
 </head>
 <body>
