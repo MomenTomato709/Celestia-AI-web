@@ -306,57 +306,54 @@ nav ul li a {
     
 @media (max-width: 768px) {
   nav ul {
+    display: flex;
     gap: 0.5rem;
-    overflow-x: auto;                
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    white-space: nowrap;             
-    padding-bottom: 0.5rem;          
+    padding: 0 0.5rem; 
+    scrollbar-width: thin; 
   }
+
+  nav ul::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  nav ul::-webkit-scrollbar-thumb {
+    background: rgba(94, 138, 255, 0.5);
+    border-radius: 3px;
+  }
+
   nav ul li {
-    display: inline-block;           
+    flex: 0 0 auto;
   }
+
   nav ul li a {
+    padding: 0.5rem 1rem;       
+    font-size: 1rem;            
+    max-width: none;            
+    white-space: nowrap;       
+    border-radius: 8px;
     display: inline-block;
-    padding: 0.5rem 1rem;          
-    font-size: 1rem;             
-    max-width: 200px;              
-    white-space: normal;            
-    border-radius: 6px;
-    box-sizing: border-box;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 1.5rem;
-    min-height: 150px;
   }
 
   .button {
     width: 100%;
-    max-width: 300px;
-    min-width: 150px;             
-    padding: 0.75rem 1rem;
-    text-align: center;
-    border-radius: 6px;
+    max-width: 320px;
+    margin: 0 auto 0.75rem auto;
   }
 
   .center-buttons {
+    flex-direction: column;
+    align-items: center;
     gap: 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
   button.submit-btn {
     width: 100%;
-    max-width: 300px;
-    min-width: 150px;
-    padding: 0.75rem 1rem;
+    max-width: 320px;
   }
 }
+
   </style>
 </head>
 <body>
