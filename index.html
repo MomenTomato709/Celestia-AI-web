@@ -91,17 +91,21 @@
       margin: 0;
     }
 
-    nav ul li a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 2px solid white;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      border-radius: 6px;
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
+nav ul li a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all var(--transition);
+  white-space: nowrap;          
+  max-width: 140px;             
+  overflow: hidden;             
+  text-overflow: ellipsis;      
+}
+
 
     nav ul li a:hover, nav ul li a:focus {
       background-color: var(--color-primary);
