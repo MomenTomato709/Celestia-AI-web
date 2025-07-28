@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <title>Celestia AI - Inteligencia Artificial que Evoluciona</title>
   <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32?text=AI" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha256-XhF8k7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.7/dist/tailwind.min.css" integrity="sha256-/sL2HGlkE+6DWV6Ly1bT4q3uZqW53AKK2uZ1jUjJGLc=" crossorigin="anonymous" />
   <style>
     :root {
       --color-bg: #0b1120;
@@ -45,7 +45,7 @@
 
     header {
       background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
@@ -64,17 +64,22 @@
     }
 
     nav {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
+      border-bottom: none !important; /* Elimina cualquier borde inferior */
     }
 
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding: 0 1rem;
+      gap: 1rem;
+      padding: 0;
+      flex-wrap: wrap;
+      border-bottom: none !important; /* Elimina cualquier borde inferior */
+    }
+
+    nav ul li {
+      margin: 0;
     }
 
     nav ul li a {
@@ -89,15 +94,6 @@
       color: #dbeafe;
     }
 
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: #e5e7eb;
-      cursor: pointer;
-    }
-
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -106,10 +102,14 @@
     }
 
     section {
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: 8px;
       margin-bottom: 2rem;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     body.dark-theme section {
@@ -126,12 +126,12 @@
 
     p {
       font-size: 1rem;
-      color: var(--color-text);
+      color: var(--color-light);
       text-align: center;
     }
 
-    body.dark-theme p {
-      color: var(--color-light-text);
+    body.light-theme p {
+      color: var(--color-text-light);
     }
 
     ul {
@@ -149,12 +149,12 @@
       position: relative;
       text-align: left;
       font-size: 1rem;
-      color: var(--color-text);
+      color: var(--color-light);
       width: 100%;
     }
 
-    body.dark-theme ul li {
-      color: var(--color-light-text);
+    body.light-theme ul li {
+      color: var(--color-text-light);
     }
 
     ul li::before {
@@ -172,7 +172,6 @@
       border-radius: 6px;
       font-weight: 500;
       text-decoration: none;
-      margin: 0.5rem auto;
       transition: background-color var(--transition), transform var(--transition);
       text-align: center;
     }
@@ -192,6 +191,16 @@
       100% { transform: scale(1); }
     }
 
+    .center-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      margin: 1rem auto;
+    }
+
     form {
       text-align: center;
       max-width: 500px;
@@ -202,11 +211,11 @@
       display: block;
       margin: 1rem 0 0.5rem;
       font-weight: 500;
-      color: var(--color-text);
+      color: var(--color-light);
     }
 
-    body.dark-theme label {
-      color: var(--color-light-text);
+    body.light-theme label {
+      color: var(--color-text-light);
     }
 
     input, textarea {
@@ -215,7 +224,7 @@
       border: 1px solid #d1d5db;
       border-radius: 6px;
       background: #f9fafb;
-      color: var(--color-text);
+      color: var(--color-text-light);
       font-size: 1rem;
       transition: border-color var(--transition), box-shadow var(--transition);
     }
@@ -223,7 +232,7 @@
     body.dark-theme input, body.dark-theme textarea {
       background: #4a5568;
       border-color: #4a5568;
-      color: var(--color-light-text);
+      color: var(--color-light);
     }
 
     input:focus, textarea:focus {
@@ -240,7 +249,6 @@
     }
 
     button.submit-btn {
-      margin: 1rem auto;
       background-color: var(--color-primary);
       border: none;
       color: white;
@@ -250,6 +258,7 @@
       cursor: pointer;
       transition: background-color var(--transition), transform var(--transition);
       display: block;
+      margin: 1rem auto;
     }
 
     button.submit-btn:hover, button.submit-btn:focus {
@@ -263,14 +272,14 @@
       right: 1rem;
       background: none;
       border: none;
-      color: var(--color-text);
+      color: var(--color-light);
       font-size: 1.5rem;
       cursor: pointer;
       z-index: 10;
     }
 
-    body.dark-theme .theme-toggle {
-      color: var(--color-light-text);
+    body.light-theme .theme-toggle {
+      color: var(--color-text-light);
     }
 
     footer {
@@ -281,30 +290,15 @@
       border-top: 1px solid #e5e7eb;
     }
 
-    body.dark-theme footer {
+    body.light-theme footer {
       color: #9ca3af;
       border-top: 1px solid #4a5568;
     }
 
     @media (max-width: 768px) {
       nav ul {
-        display: none;
         flex-direction: column;
-        background: var(--color-dark-bg);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 1rem;
-        border-radius: 0 0 8px 8px;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
+        gap: 0.5rem;
       }
 
       header h1 {
@@ -312,37 +306,29 @@
       }
 
       section {
-        padding: 1rem;
+        padding: 1.5rem;
+        min-height: 150px;
       }
 
       .button {
-        display: block;
-        margin: 0.5rem auto;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .center-buttons {
+        gap: 0.5rem;
       }
 
       button.submit-btn {
-        margin: 1rem auto;
-      }
-
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+        width: 100%;
+        max-width: 300px;
       }
     }
-  <style>
-  .center-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-</style>
+  </style>
 </head>
-<body>
+<body class="light-theme">
   <a href="#main-content" class="sr-only focus:not-sr-only bg-primary text-white p-2 rounded">Ir al contenido principal</a>
   <button class="theme-toggle" aria-label="Cambiar tema" onclick="toggleTheme()">🌙</button>
-  <button class="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
 
   <header>
     <h1 aria-label="Logo de Celestia AI">Celestia AI</h1>
@@ -384,31 +370,30 @@
       <p>Celestia AI está diseñada para adaptarse a tus necesidades, evolucionando constantemente gracias a su capacidad de autoaprendizaje y ofreciendo respuestas precisas y útiles en tiempo real.</p>
     </section>
 
-<section id="documentacion">
-  <h2>Documentación Legal y Pruebas</h2>
-  <p>Descarga los documentos que respaldan el desarrollo, propiedad intelectual y registro de Celestia AI.</p>
-  <div class="center-buttons">
-    <a class="button" href="https://drive.google.com/file/d/1yDcvk3EWXriJlhiQM3fbmX2DAhKb45vC/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Cronología de Desarrollo</a>
-    <a class="button" href="https://drive.google.com/file/d/12e2FbrM0sWtXYJkJNXnMcphBHHoocp9G/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Declaración de Intención</a>
-    <a class="button" href="https://drive.google.com/file/d/190SJ65UpgoRdMwTfNhWBdluF4e3O2nEG/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Derechos y Propiedad Intelectual</a>
-    <a class="button" href="https://drive.google.com/file/d/1TVeZnZJOpnX0czGl3H8jlwBQAb3rDK1O/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Detalle Técnico</a>
-    <a class="button" href="https://drive.google.com/file/d/1azaeWD69wNz7tWlJq9MUBidjf1m7oLjT/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Registro General</a>
-    <a class="button" href="https://drive.google.com/file/d/1HcGrjj2ge1JXtEoEXGCT4jANrLlw4eHi/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Documento de Invención</a>
-  </div>
-</section>
+    <section id="documentacion">
+      <h2>Documentación Legal y Pruebas</h2>
+      <p>Descarga los documentos que respaldan el desarrollo, propiedad intelectual y registro de Celestia AI.</p>
+      <div class="center-buttons">
+        <a class="button" href="https://drive.google.com/file/d/1yDcvk3EWXriJlhiQM3fbmX2DAhKb45vC/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Descargar Cronología de Desarrollo">Cronología de Desarrollo</a>
+        <a class="button" href="https://drive.google.com/file/d/12e2FbrM0sWtXYJkJNXnMcphBHHoocp9G/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Descargar Declaración de Intención">Declaración de Intención</a>
+        <a class="button" href="https://drive.google.com/file/d/190SJ65UpgoRdMwTfNhWBdluF4e3O2nEG/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Descargar Derechos y Propiedad Intelectual">Derechos y Propiedad Intelectual</a>
+        <a class="button" href="https://drive.google.com/file/d/1TVeZnZJOpnX0czGl3H8jlwBQAb3rDK1O/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Descargar Detalle Técnico">Detalle Técnico</a>
+        <a class="button" href="https://drive.google.com/file/d/1azaeWD69wNz7tWlJq9MUBidjf1m7oLjT/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Descargar Registro General">Registro General</a>
+        <a class="button" href="https://drive.google.com/file/d/1HcGrjj2ge1JXtEoEXGCT4jANrLlw4eHi/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Descargar Documento de Invención">Documento de Invención</a>
+      </div>
+    </section>
 
-
-<section id="donar">
-  <h2>💜 Apoya el Proyecto</h2>
-  <p>Si te gusta Celestia AI, haz una donación voluntaria para apoyar su desarrollo.</p>
-  <div class="center-buttons">
-    <a class="button" href="https://buy.stripe.com/3cI3cu0w09k36b4fzZ73G00" target="_blank" rel="noopener noreferrer">💳 Donar a Celestia AI</a>
-  </div>
-</section>
-
+    <section id="donar">
+      <h2>💜 Apoya el Proyecto</h2>
+      <p>Si te gusta Celestia AI, haz una donación voluntaria para apoyar su desarrollo.</p>
+      <div class="center-buttons">
+        <a class="button donate" href="https://buy.stripe.com/3cI3cu0w09k36b4fzZ73G00" target="_blank" rel="noopener noreferrer" aria-label="Donar a Celestia AI">💳 Donar a Celestia AI</a>
+      </div>
+    </section>
 
     <section id="contacto">
       <h2>Contacto</h2>
+      <!-- Reemplaza 'your_formspree_id' con tu ID real de Formspree -->
       <form id="contactForm" action="https://formspree.io/f/your_formspree_id" method="POST" class="text-center">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required aria-describedby="nombre-error" />
