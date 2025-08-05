@@ -307,10 +307,18 @@ nav ul li a {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
   }
 
   nav ul {
-    display: none;
+    display: none; /* Oculta el menú por defecto */
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -323,34 +331,35 @@ nav ul li a {
   }
 
   nav ul.active {
-    display: flex;
+    display: flex; /* Muestra el menú cuando tiene la clase .active */
   }
 
   nav ul li {
-    margin: 0.2rem 0; /* Reducido para botones más juntos */
+    margin: 0.1rem 0; /* Espaciado mínimo para botones más juntos */
   }
 
   nav ul li a {
     display: block;
-    padding: 0.5rem; /* Reducido para menos espacio interno */
-    font-size: 1rem;
+    padding: 0.4rem; /* Reducido para botones compactos */
+    font-size: 0.95rem; /* Ligeramente más pequeño para mejor ajuste */
     max-width: none;
     border: none;
     border-radius: 4px;
     background: var(--color-primary);
     text-align: center;
+    color: white;
   }
 
   .button {
     width: 100%;
     max-width: 300px;
-    margin: 0 auto 0.25rem auto;
+    margin: 0 auto 0.2rem auto; /* Espaciado reducido */
   }
 
   .center-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem; /* Reducido para botones más juntos */
+    gap: 0.2rem; /* Espaciado mínimo para botones más juntos */
   }
 
   button.submit-btn {
