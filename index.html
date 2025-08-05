@@ -307,10 +307,10 @@ nav ul li a {
 @media (max-width: 768px) {
   nav ul {
     display: flex;
-    gap: 0.05rem; /* Muy reducido para botones más juntos */
+    gap: 0; /* Eliminado para botones completamente juntos */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 0 0.2rem; /* Menos padding en el contenedor */
+    padding: 0 0.1rem; /* Mínimo padding en el contenedor */
     scrollbar-width: thin;
     white-space: nowrap;
     justify-content: center; /* Centra los botones horizontalmente */
@@ -318,7 +318,7 @@ nav ul li a {
   }
 
   nav ul::-webkit-scrollbar {
-    height: 4px; /* Barra de scroll más delgada */
+    height: 4px; /* Barra de scroll delgada */
   }
 
   nav ul::-webkit-scrollbar-thumb {
@@ -328,36 +328,36 @@ nav ul li a {
 
   nav ul li {
     flex: 0 0 auto;
-    margin: 0; /* Sin margen para minimizar espacio */
+    margin: 0; /* Sin margen */
   }
 
   nav ul li a {
-    padding: 0.15rem 0.3rem; /* Muy reducido para botones súper compactos */
-    font-size: 0.8rem; /* Fuente más pequeña para ajustar más botones */
+    padding: 0.1rem 0.2rem; /* Mínimo padding para botones súper compactos */
+    font-size: 0.75rem; /* Fuente más pequeña para máxima compacidad */
     max-width: none;
     white-space: nowrap;
-    border: 1px solid white; /* Borde más delgado para compacidad */
-    border-radius: 3px; /* Bordes más pequeños */
+    border: 1px solid white;
+    border-radius: 2px; /* Bordes mínimos */
     display: inline-block;
     text-align: center;
   }
 
   .button {
     width: 100%;
-    max-width: 260px; /* Más pequeño para mejor centrado */
-    margin: 0 auto 0.05rem auto; /* Espaciado mínimo */
+    max-width: 250px; /* Más pequeño para centrado */
+    margin: 0 auto; /* Sin margen inferior para máxima cercanía */
   }
 
   .center-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 0.05rem; /* Muy reducido para botones más juntos */
-    justify-content: center; /* Centra los botones */
+    gap: 0; /* Eliminado para botones completamente juntos */
+    justify-content: center;
   }
 
   button.submit-btn {
     width: 100%;
-    max-width: 260px;
+    max-width: 250px;
   }
 }
   </style>
