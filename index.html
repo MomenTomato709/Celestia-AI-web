@@ -307,15 +307,16 @@ nav ul li a {
 @media (max-width: 768px) {
   nav ul {
     display: flex;
-    gap: 0.3rem; /* Reducido para botones más juntos */
+    gap: 0.1rem; /* Muy reducido para botones más juntos */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 0 0.5rem;
+    padding: 0 0.3rem; /* Menos padding en el contenedor */
     scrollbar-width: thin;
+    white-space: nowrap; /* Evita que los botones se rompan en varias líneas */
   }
 
   nav ul::-webkit-scrollbar {
-    height: 6px;
+    height: 5px; /* Barra de scroll más delgada */
   }
 
   nav ul::-webkit-scrollbar-thumb {
@@ -325,34 +326,34 @@ nav ul li a {
 
   nav ul li {
     flex: 0 0 auto;
-    margin: 0; /* Sin margen para reducir espacio */
+    margin: 0; /* Sin margen para minimizar espacio */
   }
 
   nav ul li a {
-    padding: 0.3rem 0.6rem; /* Reducido para botones más compactos */
-    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
-    max-width: none; /* Elimina límite de ancho */
+    padding: 0.2rem 0.4rem; /* Muy reducido para botones compactos */
+    font-size: 0.85rem; /* Fuente más pequeña para ajustar más botones */
+    max-width: none; /* Sin límite de ancho */
     white-space: nowrap;
     border: 2px solid white;
-    border-radius: 6px;
+    border-radius: 4px; /* Bordes más pequeños para compacidad */
     display: inline-block;
   }
 
   .button {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto 0.2rem auto; /* Reducido para botones más juntos */
+    max-width: 280px; /* Ligeramente más pequeño para consistencia */
+    margin: 0 auto 0.1rem auto; /* Espaciado mínimo */
   }
 
   .center-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem; /* Reducido para botones más juntos */
+    gap: 0.1rem; /* Muy reducido para botones más juntos */
   }
 
   button.submit-btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
   }
 }
   </style>
