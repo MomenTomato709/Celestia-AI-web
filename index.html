@@ -306,40 +306,40 @@ nav ul li a {
     
 @media (max-width: 768px) {
   nav {
-    overflow-x: auto;             /* Permite scroll en el contenedor */
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   nav ul {
-    display: inline-flex;         /* Botones en fila sin saltar de línea */
+    display: inline-flex;
     flex-wrap: nowrap;
     padding: 0;
     margin: 0;
-    gap: 0;                       /* Sin espacio extra */
-    white-space: nowrap;          /* Evita salto de línea */
+    white-space: nowrap;
+    gap: 0 !important;          /* Fuerza sin espacio */
+    border-collapse: collapse;  /* Evita separación visual */
   }
 
   nav ul li {
-    margin: 0;
-    padding: 0;
-    flex: 0 0 auto;               /* Los botones no se expanden */
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto;
   }
 
   nav ul li a {
     display: inline-block;
-    font-size: 0.8rem;
-    padding: 0.3rem 0.4rem;       /* Compacto */
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+    margin: 0 !important;
     border: 1px solid white;
-    border-radius: 0;             /* Sin bordes redondeados extra */
-    margin: 0;                    /* Elimina cualquier espacio */
+    border-right: none;         /* Elimina borde doble */
+    border-radius: 0;           /* Sin bordes redondeados extra */
+    background: transparent;
   }
 
-  nav ul li:first-child a {
-    border-left: 1px solid white; /* Mantén borde izquierdo solo en el primero */
-  }
-
-  nav ul li a + a {
-    border-left: none;            /* Sin borde doble entre botones */
+  /* El último botón mantiene el borde derecho */
+  nav ul li:last-child a {
+    border-right: 1px solid white;
   }
 
   /* Scrollbar fina */
