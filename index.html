@@ -305,58 +305,11 @@ nav ul li a {
     }
     
 @media (max-width: 768px) {
-  header {
-    overflow: hidden;
-  }
-
-  nav {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  nav ul {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    min-width: max-content; /* 🔥 fuerza el scroll mostrando todos */
-  }
-
-  nav ul li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    flex: 0 0 auto;
-  }
-
-  nav ul li a {
-    display: block;
-    margin: 0;
-    padding: 6px 10px;
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-    border: 1px solid white;
-    border-right: none;
-    border-radius: 0;
-    background: transparent;
-    white-space: nowrap;
-  }
-
-  nav ul li:last-child a {
-    border-right: 1px solid white;
-  }
-
-  nav::-webkit-scrollbar {
-    height: 3px;
-  }
-  nav::-webkit-scrollbar-thumb {
-    background: rgba(94,138,255,0.6);
-    border-radius: 2px;
+  nav ul li.hide-mobile {
+    display: none;
   }
 }
+
 </style>
 
 <header>
