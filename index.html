@@ -305,10 +305,57 @@ nav ul li a {
     }
     
 @media (max-width: 768px) {
+  /* Ocultar solo los botones ¿Qué es? y ¿Cómo funciona? en móvil */
   nav ul li.hide-mobile {
     display: none;
   }
-}
+
+  nav ul {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0.1rem;
+    scrollbar-width: thin;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  nav ul::-webkit-scrollbar-thumb {
+    background: rgba(94, 138, 255, 0.5);
+    border-radius: 2px;
+  }
+
+  nav ul li {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  nav ul li a {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.75rem;
+    max-width: none;
+    white-space: nowrap;
+    border: 1px solid white;
+    border-radius: 2px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .center-buttons {
+    flex-direction: column;
+    align-items
 
 </style>
 
