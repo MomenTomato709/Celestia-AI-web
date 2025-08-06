@@ -305,34 +305,39 @@ nav ul li a {
     }
     
 @media (max-width: 768px) {
+  header {
+    overflow: hidden;
+  }
+
   nav {
+    width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
   }
 
   nav ul {
-    display: flex;
+    display: inline-flex;
     flex-wrap: nowrap;
     margin: 0;
     padding: 0;
     white-space: nowrap;
-    min-width: max-content;   /* 🔥 fuerza a que el UL tenga el ancho de todos los botones */
-    gap: 0;                   /* 🔥 sin espacio adicional */
+    min-width: max-content; /* 🔥 fuerza el scroll mostrando todos */
   }
 
   nav ul li {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
     flex: 0 0 auto;
   }
 
   nav ul li a {
-    display: inline-block;
-    font-size: 0.85rem;
-    padding: 0.4rem 0.7rem;
+    display: block;
     margin: 0;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
     border: 1px solid white;
     border-right: none;
     border-radius: 0;
@@ -347,33 +352,26 @@ nav ul li a {
   nav::-webkit-scrollbar {
     height: 3px;
   }
-
   nav::-webkit-scrollbar-thumb {
-    background: rgba(94, 138, 255, 0.6);
+    background: rgba(94,138,255,0.6);
     border-radius: 2px;
   }
 }
+</style>
 
-  </style>
-</head>
-<body>
-  <a href="#main-content" class="sr-only focus:not-sr-only bg-primary text-white p-2 rounded">Ir al contenido principal</a>
-  <button class="theme-toggle" aria-label="Cambiar tema" onclick="toggleTheme()">🌙</button>
-
-  <header>
-    <h1 aria-label="Logo de Celestia AI">Celestia AI</h1>
-    <p>La IA que aprende, evoluciona y automatiza por sí sola.</p>
-    <nav>
-      <ul id="navMenu">
-        <li><a href="#que-es" onclick="smoothScroll(event, 'que-es')">¿Qué es?</a></li>
-        <li><a href="#como-funciona" onclick="smoothScroll(event, 'como-funciona')">¿Cómo funciona?</a></li>
-        <li><a href="#objetivo" onclick="smoothScroll(event, 'objetivo')">Objetivo</a></li>
-        <li><a href="#documentacion" onclick="smoothScroll(event, 'documentacion')">Documentación</a></li>
-        <li><a href="#donar" onclick="smoothScroll(event, 'donar')">Donar</a></li>
-      </ul>
-    </nav>
-  </header>
-
+<header>
+  <h1 aria-label="Logo de Celestia AI">Celestia AI</h1>
+  <p>La IA que aprende, evoluciona y automatiza por sí sola.</p>
+  <nav>
+    <ul>
+      <li><a href="#que-es">¿Qué es?</a></li>
+      <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+      <li><a href="#objetivo">Objetivo</a></li>
+      <li><a href="#documentacion">Documentación</a></li>
+      <li><a href="#donar">Donar</a></li>
+    </ul>
+  </nav>
+</header>
   <main id="main-content">
     <section id="que-es">
       <h2>¿Qué es Celestia AI?</h2>
