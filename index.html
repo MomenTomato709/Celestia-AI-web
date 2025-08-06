@@ -308,46 +308,44 @@ nav ul li a {
   nav {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
   nav ul {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    white-space: nowrap !important;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
   }
 
   nav ul li {
-    margin: 0 !important;
-    padding: 0 !important;
-    flex: 0 0 auto !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 auto;
   }
 
   nav ul li a {
-    display: block !important;
-    margin: 0 !important;
-    padding: 4px 6px !important;
-    font-size: 12px !important;
-    line-height: 1 !important;
-    border: 1px solid white !important;
-    border-right: none !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-  }
-
-  nav ul li:last-child a {
-    border-right: 1px solid white !important;
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 6px 10px; /* Compacto pero legible */
+    margin: 0;
+    border: 1px solid white;
+    background: transparent;
+    white-space: nowrap; /* Evita cortar texto */
   }
 
   nav::-webkit-scrollbar {
-    height: 3px;
+    height: 4px;
   }
+
   nav::-webkit-scrollbar-thumb {
-    background: rgba(94,138,255,0.6);
+    background: rgba(94, 138, 255, 0.5);
+    border-radius: 2px;
   }
 }
+
   </style>
 </head>
 <body>
