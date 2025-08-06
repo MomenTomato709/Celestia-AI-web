@@ -312,11 +312,13 @@ nav ul li a {
   }
 
   nav ul {
-    display: inline-flex;
+    display: flex;
     flex-wrap: nowrap;
     margin: 0;
     padding: 0;
     white-space: nowrap;
+    min-width: max-content;   /* 🔥 fuerza a que el UL tenga el ancho de todos los botones */
+    gap: 0;                   /* 🔥 sin espacio adicional */
   }
 
   nav ul li {
@@ -328,20 +330,26 @@ nav ul li a {
 
   nav ul li a {
     display: inline-block;
-    font-size: 0.8rem;
-    padding: 6px 10px; /* Compacto pero legible */
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
     margin: 0;
     border: 1px solid white;
+    border-right: none;
+    border-radius: 0;
     background: transparent;
-    white-space: nowrap; /* Evita cortar texto */
+    white-space: nowrap;
+  }
+
+  nav ul li:last-child a {
+    border-right: 1px solid white;
   }
 
   nav::-webkit-scrollbar {
-    height: 4px;
+    height: 3px;
   }
 
   nav::-webkit-scrollbar-thumb {
-    background: rgba(94, 138, 255, 0.5);
+    background: rgba(94, 138, 255, 0.6);
     border-radius: 2px;
   }
 }
