@@ -307,59 +307,37 @@ nav ul li a {
 @media (max-width: 768px) {
   nav ul {
     display: flex;
-    gap: 0; /* Eliminado para botones completamente juntos */
-    overflow-x: auto;
+    gap: 0;                  /* Sin espacio entre elementos */
+    overflow-x: auto;        /* Scroll horizontal */
     -webkit-overflow-scrolling: touch;
-    padding: 0 0.1rem; /* Mínimo padding en el contenedor */
-    scrollbar-width: thin;
+    padding: 0;              /* Sin padding extra */
+    margin: 0;
     white-space: nowrap;
-    justify-content: center; /* Centra los botones horizontalmente */
-    align-items: center; /* Centra verticalmente */
-  }
-
-  nav ul::-webkit-scrollbar {
-    height: 4px; /* Barra de scroll delgada */
-  }
-
-  nav ul::-webkit-scrollbar-thumb {
-    background: rgba(94, 138, 255, 0.5);
-    border-radius: 2px;
   }
 
   nav ul li {
     flex: 0 0 auto;
-    margin: 0; /* Sin margen */
+    margin: 0;               /* Sin margen */
   }
 
   nav ul li a {
-    padding: 0.1rem 0.2rem; /* Mínimo padding para botones súper compactos */
-    font-size: 0.75rem; /* Fuente más pequeña para máxima compacidad */
-    max-width: none;
-    white-space: nowrap;
+    padding: 0.3rem 0.6rem;  /* Ajuste perfecto: no muy grande ni minúsculo */
+    font-size: 0.8rem;       /* Legible en móvil */
     border: 1px solid white;
-    border-radius: 2px; /* Bordes mínimos */
+    border-radius: 3px;
     display: inline-block;
-    text-align: center;
   }
 
-  .button {
-    width: 100%;
-    max-width: 250px; /* Más pequeño para centrado */
-    margin: 0 auto; /* Sin margen inferior para máxima cercanía */
+  nav ul::-webkit-scrollbar {
+    height: 3px; /* Scroll delgado */
   }
 
-  .center-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 0; /* Eliminado para botones completamente juntos */
-    justify-content: center;
-  }
-
-  button.submit-btn {
-    width: 100%;
-    max-width: 250px;
+  nav ul::-webkit-scrollbar-thumb {
+    background: rgba(94,138,255,0.6);
+    border-radius: 2px;
   }
 }
+
   </style>
 </head>
 <body>
