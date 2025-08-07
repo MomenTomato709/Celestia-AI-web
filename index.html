@@ -154,26 +154,42 @@
         left: 0;
         right: 0;
         background: var(--color-dark);
-        padding: 1rem;
+        padding: 0.5rem; /* Reducido para un menú más compacto */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 15;
+        opacity: 0; /* Para transición suave */
+        transform: translateY(-10px); /* Para transición suave */
+        transition: opacity var(--transition), transform var(--transition);
       }
 
       nav ul.active {
         display: flex;
+        opacity: 1;
+        transform: translateY(0);
       }
 
       nav ul li {
-        margin: 0.5rem 0;
+        margin: 0.25rem 0; /* Reducido para menos espacio entre botones */
+        display: flex;
+        justify-content: center; /* Centra el contenido horizontalmente */
+        align-items: center; /* Centra el contenido verticalmente */
       }
 
       nav ul li a {
         display: block;
-        width: 100%;
+        width: auto; /* Ajusta el ancho al contenido */
+        max-width: 200px; /* Limita el ancho máximo para mantenerlos compactos */
         text-align: center;
-        padding: 0.75rem;
-        max-width: none;
-        text-overflow: initial;
+        padding: 0.5rem 1rem; /* Reducido para botones más pequeños */
+        font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+        border-radius: 8px; /* Bordes más suaves */
+        background: rgba(255, 255, 255, 0.1); /* Fondo suave para mejor estética */
+        transition: background-color var(--transition), transform var(--transition);
+      }
+
+      nav ul li a:hover, nav ul li a:focus {
+        background-color: var(--color-primary);
+        transform: scale(1.05); /* Efecto sutil al pasar el ratón */
       }
     }
 
@@ -184,6 +200,8 @@
 
       nav ul {
         display: flex !important;
+        opacity: 1; /* Asegura visibilidad en escritorio */
+        transform: none; /* Sin transformación en escritorio */
       }
     }
 
