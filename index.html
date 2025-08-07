@@ -304,23 +304,61 @@ nav ul li a {
       border-top: 1px solid #4a5568;
     }
     
+.hamburger {
+  display: none; /* Oculta el ícono por defecto */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 @media (max-width: 768px) {
-  .buttons-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    scrollbar-width: none; /* Oculta en Firefox */
+  .hamburger {
+    display: block; /* Muestra el ícono en móvil */
   }
 
-  .buttons-container::-webkit-scrollbar {
-    display: none; /* Oculta en Chrome/Safari */
+  nav ul {
+    display: none; /* Oculta la lista por defecto */
+    flex-direction: column; /* Cambia a vertical */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-dark); /* Fondo para el menú */
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
-  .buttons-container a {
-    flex: 0 0 auto; /* Evita que se colapsen */
+  nav ul.active {
+    display: flex; /* Muestra la lista cuando está activa */
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    max-width: none; /* Elimina el límite de ancho */
+    text-overflow: initial; /* Evita cortar el texto */
+  }
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none; /* Oculta el ícono en escritorio */
+  }
+
+  nav ul {
+    display: flex !important; /* Siempre visible en escritorio */
   }
 }
 
