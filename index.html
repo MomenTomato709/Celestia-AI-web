@@ -91,25 +91,98 @@
       margin: 0;
     }
 
-nav ul li a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 2px solid white;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  border-radius: 6px;
-  transition: all var(--transition);
-  white-space: nowrap;          
-  max-width: 140px;             
-  overflow: hidden;             
-  text-overflow: ellipsis;      
-}
-
+    nav ul li a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 2px solid white;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all var(--transition);
+      white-space: nowrap;
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     nav ul li a:hover, nav ul li a:focus {
       background-color: var(--color-primary);
       color: white;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 20;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      left: 1rem; /* Cambiado a la izquierda para evitar conflicto con hamburguesa */
+      background: none;
+      border: none;
+      color: var(--color-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    body.light-theme .theme-toggle {
+      color: var(--color-text-light);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block; /* Muestra el ícono en móvil */
+      }
+
+      nav ul {
+        display: none; /* Oculta la lista por defecto */
+        flex-direction: column; /* Cambia a vertical */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-dark);
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      nav ul.active {
+        display: flex; /* Muestra la lista cuando está activa */
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      nav ul li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+        max-width: none;
+        text-overflow: initial;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none; /* Oculta el ícono en escritorio */
+      }
+
+      nav ul {
+        display: flex !important; /* Siempre visible en escritorio */
+      }
     }
 
     main {
@@ -275,22 +348,6 @@ nav ul li a {
       transform: translateY(-2px);
     }
 
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      color: var(--color-light);
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    body.light-theme .theme-toggle {
-      color: var(--color-text-light);
-    }
-
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
@@ -303,80 +360,24 @@ nav ul li a {
       color: #9ca3af;
       border-top: 1px solid #4a5568;
     }
-    
-.hamburger {
-  display: none; /* Oculta el ícono por defecto */
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.8rem;
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block; /* Muestra el ícono en móvil */
-  }
-
-  nav ul {
-    display: none; /* Oculta la lista por defecto */
-    flex-direction: column; /* Cambia a vertical */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-dark); /* Fondo para el menú */
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-
-  nav ul.active {
-    display: flex; /* Muestra la lista cuando está activa */
-  }
-
-  nav ul li {
-    margin: 0.5rem 0;
-  }
-
-  nav ul li a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 0.75rem;
-    max-width: none; /* Elimina el límite de ancho */
-    text-overflow: initial; /* Evita cortar el texto */
-  }
-}
-
-/* Ajuste para pantallas grandes */
-@media (min-width: 769px) {
-  .hamburger {
-    display: none; /* Oculta el ícono en escritorio */
-  }
-
-  nav ul {
-    display: flex !important; /* Siempre visible en escritorio */
-  }
-}
-
-</style>
-
-<header>
-  <h1 aria-label="Logo de Celestia AI">Celestia AI</h1>
-  <p>La IA que aprende, evoluciona y automatiza por sí sola.</p>
-  <nav>
-    <ul>
-      <li><a href="#que-es">¿Qué es?</a></li>
-      <li><a href="#como-funciona">¿Cómo funciona?</a></li>
-      <li><a href="#objetivo">Objetivo</a></li>
-      <li><a href="#documentacion">Documentación</a></li>
-      <li><a href="#donar">Donar</a></li>
-    </ul>
-  </nav>
-</header>
+  </style>
+</head>
+<body>
+  <header>
+    <h1 aria-label="Logo de Celestia AI">Celestia AI</h1>
+    <p>La IA que aprende, evoluciona y automatiza por sí sola.</p>
+    <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+    <nav id="navMenu">
+      <ul>
+        <li><a href="#que-es" onclick="smoothScroll(event, 'que-es')">¿Qué es?</a></li>
+        <li><a href="#como-funciona" onclick="smoothScroll(event, 'como-funciona')">¿Cómo funciona?</a></li>
+        <li><a href="#objetivo" onclick="smoothScroll(event, 'objetivo')">Objetivo</a></li>
+        <li><a href="#documentacion" onclick="smoothScroll(event, 'documentacion')">Documentación</a></li>
+        <li><a href="#donar" onclick="smoothScroll(event, 'donar')">Donar</a></li>
+      </ul>
+    </nav>
+  </header>
   <main id="main-content">
     <section id="que-es">
       <h2>¿Qué es Celestia AI?</h2>
@@ -480,6 +481,9 @@ nav ul li a {
         body.classList.toggle('light-theme');
         const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
         localStorage.setItem('theme', theme);
+        // Update theme toggle icon
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
       } catch (e) {
         console.error('Error in toggleTheme:', e);
       }
@@ -490,6 +494,9 @@ nav ul li a {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light') {
         document.body.classList.add('light-theme');
+        document.querySelector('.theme-toggle').textContent = '🌙';
+      } else {
+        document.querySelector('.theme-toggle').textContent = '☀️';
       }
     } catch (e) {
       console.error('Error loading theme:', e);
