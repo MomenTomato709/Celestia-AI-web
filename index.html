@@ -306,12 +306,21 @@ nav ul li a {
     
 @media (max-width: 768px) {
   .buttons-container {
-    display: none !important;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    scrollbar-width: none; /* Oculta en Firefox */
+  }
+
+  .buttons-container::-webkit-scrollbar {
+    display: none; /* Oculta en Chrome/Safari */
+  }
+
+  .buttons-container a {
+    flex: 0 0 auto; /* Evita que se colapsen */
   }
 }
 
