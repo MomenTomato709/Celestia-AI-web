@@ -55,6 +55,7 @@
       padding: 1.5rem 1rem;
       text-align: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     header h1 {
@@ -127,7 +128,7 @@
     .theme-toggle {
       position: absolute;
       top: 1rem;
-      left: 1rem; /* Cambiado a la izquierda para evitar conflicto con hamburguesa */
+      left: 1rem;
       background: none;
       border: none;
       color: var(--color-light);
@@ -142,12 +143,12 @@
 
     @media (max-width: 768px) {
       .hamburger {
-        display: block; /* Muestra el ícono en móvil */
+        display: block;
       }
 
       nav ul {
-        display: none; /* Oculta la lista por defecto */
-        flex-direction: column; /* Cambia a vertical */
+        display: none;
+        flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
@@ -155,10 +156,11 @@
         background: var(--color-dark);
         padding: 1rem;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 15;
       }
 
       nav ul.active {
-        display: flex; /* Muestra la lista cuando está activa */
+        display: flex;
       }
 
       nav ul li {
@@ -177,11 +179,11 @@
 
     @media (min-width: 769px) {
       .hamburger {
-        display: none; /* Oculta el ícono en escritorio */
+        display: none;
       }
 
       nav ul {
-        display: flex !important; /* Siempre visible en escritorio */
+        display: flex !important;
       }
     }
 
@@ -370,11 +372,11 @@
     <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
     <nav id="navMenu">
       <ul>
-        <li><a href="#que-es" onclick="smoothScroll(event, 'que-es')">¿Qué es?</a></li>
-        <li><a href="#como-funciona" onclick="smoothScroll(event, 'como-funciona')">¿Cómo funciona?</a></li>
-        <li><a href="#objetivo" onclick="smoothScroll(event, 'objetivo')">Objetivo</a></li>
-        <li><a href="#documentacion" onclick="smoothScroll(event, 'documentacion')">Documentación</a></li>
-        <li><a href="#donar" onclick="smoothScroll(event, 'donar')">Donar</a></li>
+        <li><a href="#que-es" class="nav-link" data-section="que-es">¿Qué es?</a></li>
+        <li><a href="#como-funciona" class="nav-link" data-section="como-funciona">¿Cómo funciona?</a></li>
+        <li><a href="#objetivo" class="nav-link" data-section="objetivo">Objetivo</a></li>
+        <li><a href="#documentacion" class="nav-link" data-section="documentacion">Documentación</a></li>
+        <li><a href="#donar" class="nav-link" data-section="donar">Donar</a></li>
       </ul>
     </nav>
   </header>
@@ -453,11 +455,16 @@
     // Smooth scrolling
     function smoothScroll(event, sectionId) {
       try {
-        if (event) event.preventDefault();
+        event.preventDefault();
         const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-        else console.error(`Element with ID '${sectionId}' not found`);
-        if (window.innerWidth <= 768) toggleMenu();
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          console.error(`Element with ID '${sectionId}' not found`);
+        }
+        if (window.innerWidth <= 768) {
+          toggleMenu();
+        }
       } catch (e) {
         console.error('Error in smoothScroll:', e);
       }
@@ -466,9 +473,13 @@
     // Hamburger menu toggle
     function toggleMenu() {
       try {
-        const menu = document.getElementById('navMenu');
-        if (menu) menu.classList.toggle('active');
-        else console.error('Navigation menu not found');
+        console.log('toggleMenu called'); // Para depuración
+        const menu = document.querySelector('#navMenu ul');
+        if (menu) {
+          menu.classList.toggle('active');
+        } else {
+          console.error('Navigation menu ul not found');
+        }
       } catch (e) {
         console.error('Error in toggleMenu:', e);
       }
@@ -501,6 +512,14 @@
     } catch (e) {
       console.error('Error loading theme:', e);
     }
+
+    // Add event listeners to nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (event) => {
+        const sectionId = link.getAttribute('data-section');
+        smoothScroll(event, sectionId);
+      });
+    });
 
     // Form validation and submission
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
