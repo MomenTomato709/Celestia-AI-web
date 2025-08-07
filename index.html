@@ -305,43 +305,23 @@ nav ul li a {
     }
     
 @media (max-width: 768px) {
-  nav ul {
+  .buttons-container {
     display: flex;
-    flex-direction: row;
     overflow-x: auto;
     white-space: nowrap;
-    padding: 0.5rem;
-    gap: 0.5rem;
-    scrollbar-width: thin;
+    padding: 10px 0;
+    gap: 10px;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
-  nav ul::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  nav ul::-webkit-scrollbar-thumb {
-    background: rgba(94, 138, 255, 0.5);
-    border-radius: 2px;
-  }
-
-  nav ul li {
+  .buttons-container a {
     flex: 0 0 auto;
-  }
-
-  nav ul li a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    border: 2px solid white;
-    border-radius: 6px;
-    text-align: center;
-    max-width: none;
-    overflow: visible;
-    text-overflow: unset;
+    scroll-snap-align: start;
   }
 }
+
 
 </style>
 
